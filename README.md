@@ -1,28 +1,41 @@
 # Neon Dodge — Android
 
-این پوشه یک پروژه آماده برای ساخت APK با GitHub Actions است.
+این پروژه برای ساخت APK با GitHub Actions آماده شده است.
 
-## ساخت APK در GitHub
+## ساختار مهم
 
-1. یک Repository خالی بساز و همه فایل‌های این پوشه را داخل آن آپلود کن.
-2. وارد تب **Actions** شو.
-3. Workflow با نام **Build Neon Dodge APK** را باز کن.
-4. روی **Run workflow** بزن.
-5. بعد از اتمام Build، در صفحه Workflow بخش **Artifacts** را باز کن.
-6. فایل **Neon-Dodge-APK** را دانلود کن؛ داخل آن `Neon-Dodge.apk` قرار دارد.
+فایل Workflow **مستقیماً** در این مسیر است:
 
-Workflow علاوه بر اجرای دستی، با Push به `main` یا `master` هم اجرا می‌شود.
+```text
+.github/workflows/build-apk.yml
+```
 
-## نکته‌های نسخه موبایل
+داخل Repository نباید `.github` تو در تو باشد.
 
-- عنوان برنامه: **Neon Dodge**
-- Fullscreen عمداً غیرفعال است و نوارهای سیستمی اندروید باقی می‌مانند.
-- بازی در حالت افقی (Landscape) اجرا می‌شود تا فضای کافی برای کنترل‌های لمسی داشته باشد.
-- کنترل‌های لمسی روی صفحه قرار دارند: چهار جهت + دکمه FIRE.
-- سه Game Mode، فارسی/انگلیسی، Level Up، Combo، Power-up و رکورد زمان حفظ شده‌اند.
-- صدای بازی از فایل‌های WAV داخل `data/sounds` خوانده می‌شود.
-- رکوردهای بازی داخل فضای داده برنامه ذخیره می‌شوند.
+ساختار باید دقیقاً شبیه این باشد:
 
-## آیکون
+```text
+Neon-Dodge-APK/
+├── main.py
+├── buildozer.spec
+├── data/
+│   ├── icon.png
+│   └── sounds/
+└── .github/
+    └── workflows/
+        └── build-apk.yml
+```
 
-آیکون 512x512 مخصوص Android در `data/neondodge_icon.png` قرار دارد و توسط Buildozer به عنوان آیکون برنامه استفاده می‌شود.
+## GitHub
+
+1. یک Repository معمولی بساز.
+2. **محتویات همین ZIP را مستقیم در ریشه Repository آپلود کن.**
+3. حتماً پوشه `.github` و فایل داخل آن آپلود شده باشد.
+4. برو به **Actions**.
+5. Workflow به نام **Build Neon Dodge APK** را باز کن.
+6. روی **Run workflow** بزن.
+7. بعد از اتمام، در قسمت Artifacts فایل `Neon-Dodge-APK` را بگیر و APK داخل آن را روی گوشی نصب کن.
+
+نام برنامه روی گوشی: **Neon Dodge**
+
+Fullscreen خاموش است و صفحه به صورت Landscape اجرا می‌شود. کنترل‌ها لمسی هستند.

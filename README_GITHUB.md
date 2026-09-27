@@ -1,28 +1,25 @@
-# Neon Dodge — Android
+# اگر Actions چیزی نشان نداد
 
-این پوشه یک پروژه آماده برای ساخت APK با GitHub Actions است.
+مشکل معمول، ساختار اشتباه پوشه است.
 
-## ساخت APK در GitHub
+در صفحه اصلی Repository باید **مستقیماً** این را ببینی:
 
-1. یک Repository خالی بساز و همه فایل‌های این پوشه را داخل آن آپلود کن.
-2. وارد تب **Actions** شو.
-3. Workflow با نام **Build Neon Dodge APK** را باز کن.
-4. روی **Run workflow** بزن.
-5. بعد از اتمام Build، در صفحه Workflow بخش **Artifacts** را باز کن.
-6. فایل **Neon-Dodge-APK** را دانلود کن؛ داخل آن `Neon-Dodge.apk` قرار دارد.
+```text
+.github/
+  workflows/
+    build-apk.yml
+```
 
-Workflow علاوه بر اجرای دستی، با Push به `main` یا `master` هم اجرا می‌شود.
+این ساختار اشتباه است:
 
-## نکته‌های نسخه موبایل
+```text
+.github/
+  workflows/
+    .github/
+      workflows/
+        build-apk.yml
+```
 
-- عنوان برنامه: **Neon Dodge**
-- Fullscreen عمداً غیرفعال است و نوارهای سیستمی اندروید باقی می‌مانند.
-- بازی در حالت افقی (Landscape) اجرا می‌شود تا فضای کافی برای کنترل‌های لمسی داشته باشد.
-- کنترل‌های لمسی روی صفحه قرار دارند: چهار جهت + دکمه FIRE.
-- سه Game Mode، فارسی/انگلیسی، Level Up، Combo، Power-up و رکورد زمان حفظ شده‌اند.
-- صدای بازی از فایل‌های WAV داخل `data/sounds` خوانده می‌شود.
-- رکوردهای بازی داخل فضای داده برنامه ذخیره می‌شوند.
+اسم Repository هر چیزی می‌تواند باشد؛ اسم خاص لازم نیست.
 
-## آیکون
-
-آیکون 512x512 مخصوص Android در `data/neondodge_icon.png` قرار دارد و توسط Buildozer به عنوان آیکون برنامه استفاده می‌شود.
+همچنین `build-apk.yml` باید روی **default branch** (معمولاً `main`) قرار گرفته باشد تا گزینه `Run workflow` دیده شود.
